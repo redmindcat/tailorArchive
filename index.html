@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/jquery.lazy.min.js"></script>
+    <link rel="stylesheet" href="./css/index4_8.css">
+    <title>tailorPaper</title>
+</head>
+<body>
+    <div class="container">
+		<h1 class="tailor"></h1>
+
+		<!-- search btn -->
+        <div class="specBtn">
+            <div class="searchBar">
+                <input type="text" name="searchValue" autocomplete="off"/>
+                <em class="arw"></em>
+                <em class="searchIcon"></em>
+                <div class="searchList"></div>
+            </div>
+            <div class="filterBox">
+                <div class="filterIcon"></div>
+                <!--<ul class="filterList"></ul>-->
+            </div>            
+        </div>
+		<div class="filterList">
+			<div class="in"><ul></ul></div>
+			<div class="botbtn"><span class="reset">reset</span><span class="go">search</span><span class="close">close</span></div>
+		</div>
+
+		<!-- xp view -->
+        <div class="xp-wrapper">
+			<div class="imageList"></div>
+        </div>
+
+		<!-- grid view -->
+		<div class="gd-wrapper" id="smooth-wrapper">
+			<div class="imgeGdList" id="smooth-content">
+			</div>
+		</div>
+
+		<!-- detail view -->
+		<div class="dtWrapper">
+			<div class="dtCarouselWrapper">
+				<div class="dtCarousel"></div>
+			</div>
+			<div class="dtThumbWrapper">
+				<div class="focusThumb"></div>
+				<div class="focusSldIndicator"></div>				
+			</div>
+			<div class="focusNumber"><span class="now"></span><em class="bar">/</em><span class="all"></span></div>
+			<div class="focusInfotxt">
+				<div class="txt"></div>
+				<div class="en"><em></em></div>
+			</div>
+			
+			<div class="contBtnbox">
+				<div class="cotbtn prev"></div>
+				<div class="cotbtn close"></div>
+				<div class="cotbtn next"></div>
+			</div>
+		</div>
+
+		<!-- zoom btn -->
+		<div class="zoomWrapper">
+			<div class="zbtn zoomout"></div>
+			<div class="zbtn zoomin"></div>
+		</div>
+		<div class="modeBtn"></div>
+
+		<!-- change view btn -->
+		<div class="viewBtnbox">
+			<div class="vbtn">
+				<div class="inicobox"><div class="inico"></div></div>
+				<div class="inbtn"><div class="txt">experience view</div></div>
+			</div>
+		</div>
+
+		<div class="cursor"><div><span></span></div></div>
+		<div class="loading"></div>
+    </div>
+</body>
+
+<audio id="effectAdo" src="./audio/click.mp3"></audio>
+<script src="./js/gsap/gsap.js"></script>
+<script src="./js/gsap/SplitText.js"></script>
+<script src="./js/gsap/ScrollTrigger.js"></script>
+<script src="./js/gsap/ScrollSmoother.js"></script>
+<script src="./js/gsap/ScrollToPlugin.js"></script>
+<script src="./js/gsap/Observer.js"></script>
+<script src="./js/fuse.js"></script>
+<script src="./js/list_4.js"></script>
+<script src="./js/index4_8_1.js"></script>
+<script src="./js/index4_8.js"></script>
+<script type="text/javascript">gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,SplitText,Observer);</script>
+</html>
+
+
+
+
+
+

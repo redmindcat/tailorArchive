@@ -1,0 +1,164 @@
+/*=========================================================================================================
+* common
+=========================================================================================================*/
+*, *:after, *:before { margin: 0; padding: 0; box-sizing: border-box; -moz-box-sizing: border-box;-webkit-box-sizing: border-box; -webkit-tap-highlight-color:transparent;}
+*:focus { outline: none; }
+html, body {margin: 0; padding: 0; width: 100%; height: 100%; font-size: 100%; -webkit-text-size-adjust: none;}
+body { overflow: hidden; color: #000; font-family: 'PretendardR',"맑은 고딕", "Malgun Gothic", Arial, sans-serif; font-weight: 100%;}
+section { position: relative; overflow: hidden; width: 100%; background: #fff; }
+ul, li, ol {list-style: none; }
+fieldset{border: none;}
+caption, legend{visibility:hidden; overflow:hidden; width:0; height:0; font-size:0; line-height:0;}
+h1, h2, h3, h4, h5 { margin: 0; padding: 0; font-weight: normal;}
+a { text-decoration: none; outline:none; }
+a:link, a:active, a:visited { color: #000; text-decoration: none; }
+img { border: 0; vertical-align:top;}
+table{border-collapse: collapse;}
+em,address{font-style: normal;}
+#skipnavi, .hidden{ width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibility:hidden; }
+a{ text-decoration:none; outline: none;  -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color:transparent; }
+a:visited,a:hover,a:active,a:focus{ background: none; -webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color:transparent; }
+input,textarea { width:100%; height:100%; font-size: 40px; color: #000; line-height: 52px; letter-spacing: -0.025em; font-family: 'PretendardB'; border:0; resize: none; }
+input { text-align:center;}
+textarea { text-align:justify; }
+
+body { overflow-y: scroll; overscroll-behavior: none;}
+body::-webkit-scrollbar{ width: 0px; }
+body::-webkit-scrollbar-track{background-color: transparent;}
+
+.container{xpadding: 20px 3px 20px 20px; width:100%; height:100%; xoverflow: clip; position:fixed;}
+
+/*=========================================================================================================
+* Search Styles
+=========================================================================================================*/
+
+.specBtn{ position: absolute; right: 35px; top: 20px; z-index:10; opacity:0; transform: translate(0, -4.8vw); pointer-events:none; transition: all .3s; }
+.specBtn.on { opacity:1; transform: translate(0, 0); pointer-events:auto; }
+.specBtn .searchBar{position: relative; display: inline-block; width: 200px; height: 40px; border-radius: 40px; background-color: rgba(255,255,255,1); font-size: 20px; text-align: center; line-height: 36px; vertical-align: top;  padding: 0 56px 2px 20px; border: 1px solid #ddd; box-shadow: 4px 4px 10px rgba(0,0,0,0.2); z-index: 1;}
+.specBtn .searchBar input{display: inline-block; width: 100%; height: 100%; text-align: left; font-size: 16px;}
+.specBtn .searchBar .arw{position: absolute; width: 6px; height: 6px; left: 146px; top: 15px; border-left: 2px solid #666; border-bottom: 2px solid #666; transform: rotate(-45deg); cursor: pointer; transform-origin: 50% 60%;}
+.specBtn .searchBar .searchIcon{position: absolute; right: 20px; top: 9px; width: 16px; height: 16px; border: 2px solid #666; border-radius: 50%; cursor: pointer;}
+.specBtn .searchBar .searchIcon:after{content: ''; position: absolute; right: -5px; bottom: -3px; width: 7px; height: 2px; background: #666; transform: rotate(45deg);}
+.specBtn .searchBar .searchIcon:hover{border-color: #208cff;}
+.specBtn .searchBar .searchIcon:hover:after{background: #208cff;}
+
+/* 필터 아이콘 스타일 */
+.filterBox{position: absolute; right: 210px; top: 12px;}
+.filterBox .filterIcon{display: inline-block; width: 16px; height: 16px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22,3 2,3 10,12.46 10,19 14,21 14,12.46'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; background-position: center; transition: all 0.2s ease;}
+.filterBox .filterIcon:hover{background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23208cff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22,3 2,3 10,12.46 10,19 14,21 14,12.46'/%3E%3C/svg%3E");}
+.filterBox .filterList{position: absolute; right: 40px; top: 50%; transform: translateY(-50%); display: inline-block; font-size: 0; border: 1px solid #ddd; border-radius: 30px; padding: 10px; opacity: 0; pointer-events: none; transition: .2s; text-align: center; white-space: nowrap;}
+.filterBox .filterList li{display: inline-block; font-size: 16px; margin: 0 6px; font-weight: 600; cursor: pointer; border-radius: 30px; transition: color 0.2s ease; white-space: nowrap;}
+.filterBox .filterList li:hover{color: #208cff;}
+.filterBox .filterList li.on{color: #208cff;}
+.specBtn.filterActive .filterIcon{background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23208cff' stroke='%23208cff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='22,3 2,3 10,12.46 10,19 14,21 14,12.46'/%3E%3C/svg%3E");}
+.specBtn.filterActive .filterList{opacity: 1; pointer-events: auto;}
+
+.specBtn .searchBar .searchList{position: absolute; left: 0; top: 39px; width: 100%; height: 0; overflow: hidden; background-color: rgba(255,255,255,1); box-shadow: 4px 4px 10px rgba(0,0,0,0.2); overflow-y: auto; border-radius: 0 0 10px 10px;}
+.specBtn .searchBar .searchList .searchItem{display: block; width: 100%; height: 40px; line-height: 40px; text-align: center; font-size: 16px; cursor: pointer; text-align: left; padding-left: 20px;}
+.specBtn .searchBar .searchList .noResult{font-size: 12px; color: #666; text-align: center; line-height: 40px; padding-left: 0; pointer-events: none; user-select: none;}
+.specBtn .searchBar .searchList .searchItem:hover{background-color: rgba(230,230,230,0.6);}
+.specBtn .searchBar.on{border-radius: 10px 10px 0 0;}
+.specBtn .searchBar.on .arw{transform: rotate(135deg);}
+.specBtn .searchBar.on .searchList{max-height: 280px; height: auto;}
+
+
+
+/*=========================================================================================================
+* Image List Styles
+=========================================================================================================*/
+/*.imageList { margin-top: 20px; overflow-y: auto; height: calc(100vh - 99px); font-size: 0;}
+.imageList .item { display: inline-block; width: 160px; height: 160px; xborder: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #f8f8f8; transition: transform 0.2s ease; position: relative; margin: 5px;}
+.imageList .item:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1);}
+.imageList .item img { width: 100%; height: 100%; object-fit: cover; opacity: 1;}
+.item::before {  content: '';  position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  width: 30px;  height: 30px;  border: 2px solid #ddd;  border-top: 2px solid #999;  border-radius: 50%;  animation: spin 1s linear infinite;  z-index: 1;}
+.item.loaded::before {display: none;}
+@keyframes spin { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); }}*/
+
+
+
+
+.off {pointer-events: none;}
+.ease { transition: all ease 1s; }
+.hidden {opacity: 0;pointer-events: none !important;z-index: -1;}
+.overflow-visible {  overflow: visible;}
+.no-transition { transition: none !important;}
+
+.fixed { position: fixed;}
+.special-fixed {  position: fixed;  height: 100%;  width: 100%;}
+.drag-easing { transition: none; transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);}
+.drag-easing2 { transition: none; transition: height 0.6s cubic-bezier(0.33, 1, 0.68, 1);}
+
+
+
+
+/* xp Wrapper */
+.imageList { width:100%; height:100%; overflow:hidden; position: absolute; top: 0; left: 0; font-size:0; user-select: none; }
+.imageList .item { display:inline-block; width: 12vw; height:12vw; verflow: hidden; background: #f8f8f8; position: relative;}
+.imageList .item img { display:inline-block; width:100%; height: auto; }
+
+
+
+
+
+/* focus Wrapper */
+.focusWrapper { width:100%; height:100%; overflow:hidden; position:Absolute; top:0; left:0; transition: all ease 0.5s 0.5s; z-index: -1; pointer-events: none; opacity:0; background-color:rgba(255, 255, 255, 0.8); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);}
+.focusWrapper .focusCarousel { position:relative;}
+.focusWrapper .focusCarousel .item { width:100%; height:100%; display: flex; align-items: center; justify-content: center; text-align:center;}
+.focusWrapper .focusCarousel img { display:inline-block; width: 60vw; height: auto; max-height: 100vh; max-width: 100vh; }
+.focusWrapper .focusCarousel img.on { xopacity:1; }
+.focusWrapper .focusCarousel.out { opacity:0; transition: opacity .3s;}
+.focusWrapper .focusCarousel.out img { opacity:0; transform: scale(0); transition: all .3s .3s;}
+.focusWrapper .focusCarousel.out.in { opacity:1; transition-duration:0s; }
+.focusWrapper .focusCarousel.out.in img { opacity:1; transform: scale(1); transition: all .3s;}
+.focusWrapper .contextualInfo { opacity:0; height: 20px; line-height:20px; font-family: 'PretendardB'; overflow:hidden; position:Absolute; left:20px; bottom: 20px; transform: translateY(50px); transition: all .5s; }
+.focusWrapper.on { z-index:1; pointer-events: auto; opacity:1;}
+.focusWrapper .contextualInfo.on { opacity:1; transform: translateY(0); }
+
+.focusWrapper .focusSldWrapper { padding:7px 0; bottom: 2.5em; width: 7.2em; height: 58vh; position: absolute; left: 1rem;overflow: hidden; mask-image: linear-gradient(to bottom, #000000 94%, rgba(0, 0, 0, 0) 98%);-webkit-mask-image: linear-gradient(to bottom, #000000 94%, rgba(0, 0, 0, 0) 98%);}
+/*.focusWrapper .focusSldWrapper::-webkit-scrollbar{width: 3px;}
+.focusWrapper .focusSldWrapper::-webkit-scrollbar-thumb{background-color: transparent;}
+.focusWrapper .focusSldWrapper::-webkit-scrollbar-track{background-color: transparent;}
+.focusWrapper .focusSldWrapper:before,.focusWrapper .focusSldWrapper:after { content:''; width:100%;height:10px; position:absolute; left:0; z-index:1; }
+.focusWrapper .focusSldWrapper:before { top:-1px; background: linear-gradient(to bottom, #fff 30%, #fff 0%, transparent);}
+.focusWrapper .focusSldWrapper:after { bottom:-1px; background: linear-gradient(to top, #fff 30%, #fff 0%, transparent); }*/
+.focusWrapper .focusSldWrapper .focusSld {position: relative; }
+.focusWrapper .focusSldWrapper .focusSld img { opacity:0; transform: translateX(-50px); transition: all .5s; margin-top: 8px; width: 100%; height: 7em; border: 1px solid rgba(0,0,0,0.2); border-radius: 10px;cursor: pointer; max-width: 100vh; }
+.focusWrapper .focusSldWrapper .focusSld img:first-child { margin-top:0; }
+.focusWrapper .focusSldWrapper .focusSldIndicator { opacity:0; transition: all .5s; width: 100%; height: 7em; border: 1px solid rgba(0,0,0,0.5);border-radius: 10px; position: absolute; top: 7px; pointer-events: none;}
+.focusWrapper .focusSldWrapper.on .focusSld img { opacity:1; transform: translateX(0);}
+.focusWrapper .focusSldWrapper.on .focusSld img:nth-child(1) { transition-delay: .3s; }
+.focusWrapper .focusSldWrapper.on .focusSld img:nth-child(2) { transition-delay: .4s; }
+.focusWrapper .focusSldWrapper.on .focusSld img:nth-child(3) { transition-delay: .5s; }
+.focusWrapper .focusSldWrapper.on .focusSld img:nth-child(4) { transition-delay: .6s; }
+.focusWrapper .focusSldWrapper.on .focusSld img:nth-child(5) { transition-delay: .7s; }
+.focusWrapper .focusSldWrapper.on .focusSldIndicator { opacity:1; transition-delay: 1s; }
+
+
+.focusWrapper .contBtnbox { opacity:0; transform: translateY(50px); width:100%; text-align:center; position:absolute; bottom: 50px; left:0; transition: all .5s;}
+.focusWrapper .contBtnbox.on { opacity:1; transform: translateY(0); transition-delay: .5s; }
+.focusWrapper .contBtnbox.on .cotbtn { pointer-events:auto; }
+.focusWrapper .contBtnbox .cotbtn { display:inline-block; width:50px; height:50px; border: 1px solid rgba(0,0,0,0.2); background: rgba(255,255,255,0.5); border-radius:100%; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); cursor: pointer;pointer-events:none;  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
